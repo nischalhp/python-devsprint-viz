@@ -30,6 +30,7 @@ class Bar:
         encoding["y"]["name"]=y_axis
         self.op_dict["encoding"]=encoding
         self.op_dict["data"]=data
+        self.spec = json.dumps(self.op_dict)
 
 
 # In[16]:
@@ -59,8 +60,8 @@ my_graph = Bar([
     "areas": "central",
     "sales": '10'
   }
-],"area","sales")
+],"areas","sales")
 
 
-pp.pprint(my_graph.op_dict)
+pp.pprint(my_graph.spec)
 
