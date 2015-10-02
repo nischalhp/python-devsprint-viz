@@ -24,9 +24,9 @@ class Bar:
         self.op_dict["marktype"]="bar"
         encoding["x"]={}
         encoding["y"]={}
-        encoding["x"]["type"]="Q"
+        encoding["x"]["type"]="O"
         encoding["x"]["name"]=x_axis
-        encoding["y"]["type"]="O"
+        encoding["y"]["type"]="Q"
         encoding["y"]["name"]=y_axis
         self.op_dict["encoding"]=encoding
         self.op_dict["data"]=data
