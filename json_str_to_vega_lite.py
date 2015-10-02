@@ -4,7 +4,7 @@
 # In[2]:
 
 import json
-
+import pprint
 
 # In[3]:
 
@@ -35,7 +35,7 @@ class Bar:
 
 
 # In[16]:
-
+pp = pprint.PrettyPrinter(indent=4)
 my_graph = Bar([
   {
     "areas": "north",
@@ -62,7 +62,7 @@ my_graph = Bar([
 
 # In[17]:
 
-my_graph.op_dict
+pp.pprint(my_graph.op_dict)
 
 
 # In[ ]:
