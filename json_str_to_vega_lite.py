@@ -30,12 +30,13 @@ class Bar:
         encoding["y"]["name"]=y_axis
         self.op_dict["encoding"]=encoding
         self.op_dict["data"]=data
-        
-        
+
+
 
 
 # In[16]:
-
+#***********************************************example******************************************************
+'''
 my_graph = Bar([
   {
     "areas": "north",
@@ -63,9 +64,4 @@ my_graph = Bar([
 # In[17]:
 
 my_graph.op_dict
-
-
-# In[ ]:
-
-
-
+'''
