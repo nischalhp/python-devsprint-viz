@@ -1,0 +1,22 @@
+[
+  {
+    "areas": "north",
+    "sales": 5
+  },
+  {
+    "areas": "east",
+    "sales": 25
+  },
+  {
+    "areas": "west",
+    "sales": 15
+  },
+  {
+    "areas": "south",
+    "sales": 20
+  },
+  {
+    "areas": "central",
+    "sales": 10
+  }
+]
