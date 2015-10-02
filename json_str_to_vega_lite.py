@@ -30,12 +30,14 @@ class Bar:
         encoding["y"]["name"]=y_axis
         self.op_dict["encoding"]=encoding
         self.op_dict["data"]=data
-        
-        
 
 
 # In[16]:
 pp = pprint.PrettyPrinter(indent=4)
+
+
+# In[16]:
+#***********************************************example******************************************************
 my_graph = Bar([
   {
     "areas": "north",
@@ -60,12 +62,5 @@ my_graph = Bar([
 ],"area","sales")
 
 
-# In[17]:
-
 pp.pprint(my_graph.op_dict)
-
-
-# In[ ]:
-
-
 
