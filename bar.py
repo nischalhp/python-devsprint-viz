@@ -1,69 +1,74 @@
-###Author: Sumit Raj###
 
-import pandas
+import json
+import pprint
+import pandas as pd
+
+
+def convert_str_to_json(json_string):
+    _json = json.loads(json_string)
+    return _json
+
+
 class Bar:
-   'Common base class for bar chart'
-   dictt = {}
-   def __init__(self, data=None, xAxis=None, yAxis=None):
-      self.data = data
-      #self.encoding_dict = encoding_dict
-      self.xAxis = xAxis
-      self.yAxis = yAxis
-      self.final_json = None
-      self.csv = None 
+    def __init__(self,dataFrame,x_axis,y_axis):
 
-   def vega_encoding(self, encoding_dict):
-      self.final_json['encoding'] = encoding_dict
-      print self.final_json
+        jsonString = dataFrame.to_json(orient="records")
+        self.data= json.loads(jsonString)
+        self.xAxis = x_axis
+        self.yAxis = y_axis
 
 
-   def vega(self):
-      # self.csv.apply(self.readDataEx, axis=1)
-      # data_values = {}
-      # data_values["values"] = []
-      # for each in Bar.dictt:
-      #    data_values["values"].append({"a":each, "b":Bar.dictt[each]})
-      #print Bar.dictt
-      self.final_json = {}
-      self.final_json["data"] = self.data
-      #print self.csv.columns[0], self.csv.columns[1]
-      #final_json["encoding"] = self.encoding_dict
-      # print """call method vega_encoding passing dict as 
-      # encoding_dict = {
-      # "x": {"type": "O","name": "a"},
-      # "y": {"type": "Q","name": "b"}
-      # }"""
-      # print "Choose any two columns for x and y names"
-      # print self.csv.columns[0], self.csv.columns[1]
+    def getSpec(self):
+        data = {}
+        data['values']=self.data
 
-      self.final_json['encoding'] = {"x":{"type":"O", self.xAxis:"a"}, "y":{"type":"Q", self.yAxis:"b"}}
-      print self.final_json
+        encoding={}
+        op_dict = {}
 
-      #print self.final_json
+        op_dict["marktype"]="bar"
 
-   def vega_spec(self):
-      csv = pandas.read_csv(self.data)
-      self.csv = csv
-      self.vega()
+        encoding["x"]={}
+        encoding["y"]={}
+        encoding["x"]["type"]="O"
+        encoding["x"]["name"]=self.xAxis
+        encoding["y"]["type"]="Q"
+        encoding["y"]["name"]=self.yAxis
 
-   def readDataEx(self, row):
-      Bar.dictt[row[0]] = row[1]
+        op_dict["encoding"]=encoding
+        op_dict["data"]=data
+
+        spec = json.dumps(op_dict)
+
+        return spec
 
 
-# encoding_dict = {
-#     "x": {"type": "O","name": "a"},
-#     "y": {"type": "Q","name": "b"}
-# }
+'''
+pp = pprint.PrettyPrinter(indent=4)
 
 
- # encoding_dict = {
- #      "x": {"type": "O","area": "a"},
- #      "y": {"type": "Q","sales": "b"}
- #      }
+my_graph = Bar([
+  {
+    "areas": "north",
+    "sales": '5'
+  },
+  {
+    "areas": "east",
+    "sales": '25'
+  },
+  {
+    "areas": "west",
+    "sales": '15'
+  },
+  {
+    "areas": "south",
+    "sales": '20'
+  },
+  {
+    "areas": "central",
+    "sales": '10'
+  }
+],"areas","sales")
 
-# b1 = Bar('./data/simple.csv', encoding_dict)
-# b1.vega_spec()
 
-# from bar import Bar  
-# b= Bar('./data/simple.csv', encoding_dict)
-# b.vega_spec()
+pp.pprint(my_graph.spec)
+'''
