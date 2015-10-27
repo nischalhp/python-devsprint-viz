@@ -1,4 +1,5 @@
-
+#This document is to convert json object to a vega lite object (dictionary with required parameters)
+#Link to Vega parser https://vega.github.io/
 # coding: utf-8
 
 # In[2]:

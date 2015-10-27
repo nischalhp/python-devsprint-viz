@@ -1,5 +1,5 @@
 ###Author: Sumit Raj###
-
+#Program to parse a Bar chart CSV to encode in vega format
 import pandas
 class Bar:
    'Common base class for bar chart'
